@@ -244,13 +244,13 @@ func testPointFunctions() {
     dictonaryTotal = addPointsDict(a, b: pointDictionaryB)
     print("\t - Addition: \(a) + \(stringB) = \(dictToString(dictonaryTotal))")
     dictonaryTotal = subtractPointsDict(a, b: pointDictionaryB)
-    print("\t - Addition: \(a) - \(stringB) = \(dictToString(dictonaryTotal))")
+    print("\t - Subtraction: \(a) - \(stringB) = \(dictToString(dictonaryTotal))")
     
     let b = ["y" : 2]
     dictonaryTotal = addPointsDict(b, b: pointDictionaryB)
     print("\t - Addition: \(b) + \(stringB) = \(dictToString(dictonaryTotal))")
     dictonaryTotal = subtractPointsDict(a, b: pointDictionaryB)
-    print("\t - Addition: \(b) - \(stringB) = \(dictToString(dictonaryTotal))")
+    print("\t - Subtraction: \(b) - \(stringB) = \(dictToString(dictonaryTotal))")
 }
 
 testPointFunctions()
