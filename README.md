@@ -14,13 +14,11 @@ Requirements:
 3. Points
  - use tuples to represent x/y point pairs
  - create two functions for adding and subtracting points
-   - (1,2) + (3,4) = (4,6)
-   - (1,2) - (3,4) = (-2,-2)
+   - (1,2) + (3,4) = (4,6) and (1,2) - (3,4) = (-2,-2)
 
  - now use Dictionaries to represent points ("x" is the x coordinate, "y" is the y coordinate)
  - create two functions for adding and subtracting points
-   - (1,2) + (3,4) = (4,6)
-   - (1,2) - (3,4) = (-2,-2)
+   - (1,2) + (3,4) = (4,6) and (1,2) - (3,4) = (-2,-2)
  - handle dictionaries without "x" or "y" without crashing
  - handle dictionaries with Double values without crashing
 

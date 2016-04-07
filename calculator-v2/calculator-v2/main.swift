@@ -90,16 +90,19 @@ func count(values : [Int]) -> Int {
     return values.count
 }
 
-func avg(values : [Int]) -> Double {
+func avg(values : [Int]) -> Int {
     var total = 0
     for x in values {
         total += x
     }
-    return (Double) (total / values.count)
+    return total / values.count
 }
 
-func genericArrayFunction() {
-    //QUESTION: NOT SURE WHAT THEY WANT HERE
+func genericArrayFunction(values : [Int], op:([Int]) -> Int) -> Int {
+    return op(values)
+}
+
+func testArrayFunFunctions() {
     print("Testing the array functions:")
     let array = [1,2,3,4,5,6,7,8,9,10]
     print("\t Array = \(array)")
@@ -112,11 +115,32 @@ func genericArrayFunction() {
     total = count(array)
     print("\t - Count of an array: 1...10 = \(total)")
     
-    let doubleTotal = avg(array)
-    print("\t - Average of an array: : 1...10 = \(doubleTotal)")
+    total = avg(array)
+    print("\t - Average of an array: : 1...10 = \(total)")
+    
+    print()
+    print("Testing genericArrayFunFunctions:")
+    total = genericArrayFunction(array, op: addMultiple)
+    print("\t - Sum of an array: 1...10 = \(total)")
+    
+    total = genericArrayFunction(array, op: multiplyMultiple)
+    print("\t - Product of an array: 1...10 = \(total)")
+    
+    total = genericArrayFunction(array, op: count)
+    print("\t - Count of an array: 1...10 = \(total)")
+    
+    total = genericArrayFunction(array, op: avg)
+    print("\t - Average of an array: : 1...10 = \(total)")
 }
 
-genericArrayFunction()
+testArrayFunFunctions()
 
 
 /********* Points *********/
+
+
+
+
+
+
+
