@@ -47,7 +47,7 @@ func testBuildCalculatorFunctions() {
     total = divide(225, y: 15)
     print("\t - Division: 225 / 15 = \(total)")
     
-    print("\n")
+    print()
     
     /* Generic Function */
     print("Testing genericFunction:")
@@ -63,7 +63,7 @@ func testBuildCalculatorFunctions() {
     total = genericFunction(10, y : 5, op: divide)
     print("\t - Divide: 10 / 5 = \(total)")
     
-    print("\n")
+    print()
 }
 
 testBuildCalculatorFunctions()
@@ -103,6 +103,7 @@ func genericArrayFunction(values : [Int], op:([Int]) -> Int) -> Int {
 }
 
 func testArrayFunFunctions() {
+    //Testing Array Functions
     print("Testing the array functions:")
     let array = [1,2,3,4,5,6,7,8,9,10]
     print("\t Array = \(array)")
@@ -119,6 +120,8 @@ func testArrayFunFunctions() {
     print("\t - Average of an array: : 1...10 = \(total)")
     
     print()
+    
+    //Testing Generic Function
     print("Testing genericArrayFunFunctions:")
     total = genericArrayFunction(array, op: addMultiple)
     print("\t - Sum of an array: 1...10 = \(total)")
@@ -131,16 +134,75 @@ func testArrayFunFunctions() {
     
     total = genericArrayFunction(array, op: avg)
     print("\t - Average of an array: : 1...10 = \(total)")
+    
+    print()
 }
 
 testArrayFunFunctions()
 
 
 /********* Points *********/
+typealias PointTuple = (x : Int, y : Int)
+
+func addPointsTuple(a : PointTuple, b : PointTuple) -> PointTuple {
+    let total = (a.x + b.x, a.y + b.y)
+    return total
+}
+
+func subtractPointsTuple(a : PointTuple, b : PointTuple) -> PointTuple {
+    let total = (a.x - b.x, a.y - b.y)
+    return total
+}
+
+func addPointsDict(a : [String: Int], b : [String: Int]) -> [String: Int] {
+    let total = ["x" : (a["x"]! + b["x"]!),
+                 "y" : (a["y"]! + b["y"]!)]
+    return total
+}
+
+func subtractPointsDict(a : [String: Int], b : [String: Int]) -> [String: Int] {
+    let total = ["x" : (a["x"]! - b["x"]!),
+                 "y" : (a["y"]! - b["y"]!)]
+    return total
+}
+
+func dictToString(dict : [String: Int]) -> String {
+    return "[\(dict["x"]!), \(dict["y"]!)]"
+}
 
 
+func testPointFunctions() {
+    /* Tuples */
+    print("Testing Tuple Point Functions:")
+    let pointA = (1,2)
+    let pointB = (3,4)
+    
+    var pointTotal = addPointsTuple(pointA, b : pointB)
+    print("\t - Addition: \(pointA) + \(pointB) = \(pointTotal)")
+    
+    pointTotal = subtractPointsTuple(pointA, b: pointB)
+    print("\t - Subtraction: \(pointA) - \(pointB) = \(pointTotal)")
+    
+    print()
+    
+    /* Dictionaries */
+    print("Testing Dictionary Point Functions:")
+    let pointDictionaryA = ["x" : 1, "y" : 2]
+    let stringA = dictToString(pointDictionaryA)
+    let pointDictionaryB = ["x" : 3, "y" : 4]
+    let stringB = dictToString(pointDictionaryB)
 
+    var dictonaryTotal = addPointsDict(pointDictionaryA, b: pointDictionaryB)
+    print("\t - Addition: \(stringA) + \(stringB) = \(dictToString(dictonaryTotal))")
+    
+    dictonaryTotal = subtractPointsDict(pointDictionaryA, b: pointDictionaryB)
+    print("\t - Subtraction: \(stringA) - \(stringB) = \(dictToString(dictonaryTotal))")
+    
+    print()
+    
+}
 
+testPointFunctions()
 
 
 
