@@ -155,14 +155,52 @@ func subtractPointsTuple(a : PointTuple, b : PointTuple) -> PointTuple {
 }
 
 func addPointsDict(a : [String: Int], b : [String: Int]) -> [String: Int] {
-    let total = ["x" : (a["x"]! + b["x"]!),
-                 "y" : (a["y"]! + b["y"]!)]
+    var totalX = 0
+    var totalY = 0
+    
+    if((a["x"] != nil) && (b["x"] != nil)){
+        totalX = a["x"]! + b["x"]!
+    } else if (a["x"] != nil) {
+        totalX = a["x"]!
+    } else if (b["x"] != nil) {
+       totalX = b["x"]!
+    }
+    
+    if((a["y"] != nil) && (b["y"] != nil)){
+        totalY = a["y"]! + b["y"]!
+    } else if (a["y"] != nil) {
+        totalY = a["y"]!
+    } else if (b["y"] != nil) {
+        totalY = b["y"]!
+    }
+    
+    let total = ["x" : totalX,
+                 "y" : totalY]
     return total
 }
 
 func subtractPointsDict(a : [String: Int], b : [String: Int]) -> [String: Int] {
-    let total = ["x" : (a["x"]! - b["x"]!),
-                 "y" : (a["y"]! - b["y"]!)]
+    var totalX = 0
+    var totalY = 0
+    
+    if((a["x"] != nil) && (b["x"] != nil)){
+        totalX = a["x"]! - b["x"]!
+    } else if (a["x"] != nil) {
+        totalX = a["x"]!
+    } else if (b["x"] != nil) {
+        totalX = 0 - b["x"]!
+    }
+    
+    if((a["y"] != nil) && (b["y"] != nil)){
+        totalY = a["y"]! - b["y"]!
+    } else if (a["y"] != nil) {
+        totalY = a["y"]!
+    } else if (b["y"] != nil) {
+        totalY = 0 - b["y"]!
+    }
+    
+    let total = ["x" : totalX,
+                 "y" : totalY]
     return total
 }
 
@@ -200,6 +238,19 @@ func testPointFunctions() {
     
     print()
     
+    //Dictionary Edge Cases
+    print("Testing Dictionary Edge Cases:")
+    let a = ["x" : 1]
+    dictonaryTotal = addPointsDict(a, b: pointDictionaryB)
+    print("\t - Addition: \(a) + \(stringB) = \(dictToString(dictonaryTotal))")
+    dictonaryTotal = subtractPointsDict(a, b: pointDictionaryB)
+    print("\t - Addition: \(a) - \(stringB) = \(dictToString(dictonaryTotal))")
+    
+    let b = ["y" : 2]
+    dictonaryTotal = addPointsDict(b, b: pointDictionaryB)
+    print("\t - Addition: \(b) + \(stringB) = \(dictToString(dictonaryTotal))")
+    dictonaryTotal = subtractPointsDict(a, b: pointDictionaryB)
+    print("\t - Addition: \(b) - \(stringB) = \(dictToString(dictonaryTotal))")
 }
 
 testPointFunctions()
