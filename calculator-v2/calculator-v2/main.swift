@@ -28,9 +28,12 @@ func divide(x : Int, y : Int) -> Int {
     return x / y
 }
 
-
 //Function that expects one of them along with two Ints
-func genericFunction() {
+func genericFunction(x : Int, y : Int, op : (Int, Int) -> Int) -> Int {
+    return op(x, y);
+}
+
+func testBuildCalculatorFunctions() {
     print("Testing the four basic operations:")
     var total = add(4, y : 5)
     print("\t - Addition: 4 + 5 = \(total)")
@@ -45,9 +48,25 @@ func genericFunction() {
     print("\t - Division: 225 / 15 = \(total)")
     
     print("\n")
+    
+    /* Generic Function */
+    print("Testing genericFunction:")
+    total = genericFunction(10, y : 5, op: add)
+    print("\t - Addition: 10 + 5 = \(total)")
+    
+    total = genericFunction(10, y : 5, op: subtract)
+    print("\t - Subtraction: 10 - 5 = \(total)")
+    
+    total = genericFunction(10, y : 5, op: multiply)
+    print("\t - Multiply: 10 * 5 = \(total)")
+    
+    total = genericFunction(10, y : 5, op: divide)
+    print("\t - Divide: 10 / 5 = \(total)")
+    
+    print("\n")
 }
 
-genericFunction()
+testBuildCalculatorFunctions()
 
 
 /********* Array Fun *********/
