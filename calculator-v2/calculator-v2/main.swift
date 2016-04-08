@@ -209,6 +209,62 @@ func dictToString(dict : [String: Int]) -> String {
 }
 
 
+/* I'm tried using Enums and the Any type so that I wouldn't have to repeat these two method,
+ but I wasn't able to work out a solution before the assignment was due.
+ So for now, you'd have to check the user input values to see if it's an int or double */
+
+func addPointsDictDouble(a : [String: Double], b : [String: Double]) -> [String: Double] {
+    var totalX = 0.0
+    var totalY = 0.0
+    
+    if((a["x"] != nil) && (b["x"] != nil)){
+        totalX = a["x"]! + b["x"]!
+    } else if (a["x"] != nil) {
+        totalX = a["x"]!
+    } else if (b["x"] != nil) {
+        totalX = b["x"]!
+    }
+    
+    if((a["y"] != nil) && (b["y"] != nil)){
+        totalY = a["y"]! + b["y"]!
+    } else if (a["y"] != nil) {
+        totalY = a["y"]!
+    } else if (b["y"] != nil) {
+        totalY = b["y"]!
+    }
+    
+    let total = ["x" : totalX,
+                 "y" : totalY]
+    return total
+}
+
+func subtractPointsDictDouble(a : [String: Double], b : [String: Double]) -> [String: Double] {
+    var totalX = 0.0
+    var totalY = 0.0
+    
+    if((a["x"] != nil) && (b["x"] != nil)){
+        totalX = a["x"]! - b["x"]!
+    } else if (a["x"] != nil) {
+        totalX = a["x"]!
+    } else if (b["x"] != nil) {
+        totalX = 0 - b["x"]!
+    }
+    
+    if((a["y"] != nil) && (b["y"] != nil)){
+        totalY = a["y"]! - b["y"]!
+    } else if (a["y"] != nil) {
+        totalY = a["y"]!
+    } else if (b["y"] != nil) {
+        totalY = 0 - b["y"]!
+    }
+    
+    let total = ["x" : totalX,
+                 "y" : totalY]
+    return total
+}
+
+
+
 func testPointFunctions() {
     /* Tuples */
     print("Testing Tuple Point Functions:")
@@ -238,6 +294,21 @@ func testPointFunctions() {
     
     print()
     
+    /* Dictionaries with Doubles */
+    print("Testing Dictionary Point Functions:")
+    let doubleA = ["x" : 1.1, "y" : 2.2]
+//    let stringA = dictToString(pointDictionaryA)
+    let doubleB = ["x" : 3.3, "y" : 4.4]
+//    let stringB = dictToString(pointDictionaryB)
+    
+    var dictonaryDoubleTotal = addPointsDictDouble(doubleA, b: doubleB)
+    print("\t - Addition: \(doubleA) + \(doubleB) = \(dictonaryDoubleTotal)")
+    
+    dictonaryDoubleTotal = subtractPointsDictDouble(doubleA, b: doubleB)
+    print("\t - Subtraction: \(doubleA) - \(doubleB) = \(dictonaryDoubleTotal)")
+    
+    print()
+    
     //Dictionary Edge Cases
     print("Testing Dictionary Edge Cases:")
     let a = ["x" : 1]
@@ -254,6 +325,9 @@ func testPointFunctions() {
 }
 
 testPointFunctions()
+
+
+
 
 
 
